@@ -34,16 +34,16 @@ public class EmployeeEarnings
         System.out.print(
             "Enter type of employee (hourly, salary, or commission): ");
         String employeeType = in.next();
-        if (employeeType == "hourly")
+        if (employeeType.equals("hourly"))
         {
-          //get the hourly rate from user
-          //set the hourly rate
+          // get the hourly rate from user
+          // set the hourly rate
           valid = true;
         }
         else if (employeeType == "salary")
         {
-          //get the salary rate from user
-          //set the salary rate
+          // get the salary rate from user
+          // set the salary rate
           valid = true;
         }
         else if (employeeType == "commission")
