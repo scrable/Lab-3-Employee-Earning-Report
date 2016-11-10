@@ -6,17 +6,22 @@ public class EmployeeEarnings
   {
     boolean finished = false;
     EmployeeEarnings[] earnings;
-    earnings = new EmployeeEarnings[10];
+    int employeeAmount = 0;
+
+    Scanner in = new Scanner(System.in);
+
+    System.out.print("Enter the number of employees: ");
+    employeeAmount = in.nextInt();
+    earnings = new EmployeeEarnings[employeeAmount];
 
     while (finished != true)
     {
-      Scanner in = new Scanner(System.in);
 
       // create a report
       EmployeeEarnings employee = new EmployeeEarnings();
 
       // get employee name from user
-      System.out.println("Enter the employee's name: ");
+      System.out.print("Enter the employee's name: ");
       String name = in.next();
 
       // set employee name
@@ -26,7 +31,7 @@ public class EmployeeEarnings
       boolean valid = false;
       while (valid == false)
       {
-        System.out.println(
+        System.out.print(
             "Enter type of employee (hourly, salary, or commission): ");
         String employeeType = in.next();
         if (employeeType == "hourly")
