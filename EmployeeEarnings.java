@@ -91,7 +91,7 @@ public class EmployeeEarnings
   {
     // calc total pay from each worker in the array
     double sum = 0;
-    for(int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {
       sum += earnings[i].totalPay + earnings[i].salary;
     }
