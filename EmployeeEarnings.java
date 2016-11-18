@@ -25,7 +25,6 @@ public class EmployeeEarnings
       System.out.print("Enter the employee's name: ");
       String name = in.nextLine();
 
-
       // set employee name
       // earnings[count].setEmployeeName(name);
       employee.setEmployeeName(name);
@@ -87,6 +86,7 @@ public class EmployeeEarnings
       // increment the count to next employee
       count++;
 
+      // clear next line char
       in.nextLine();
     }
     boolean finished = false;
