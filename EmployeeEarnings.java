@@ -53,7 +53,7 @@ public class EmployeeEarnings
           // set hours worked
           employee.setHoursWorked(hours);
 
-          // calc the hourly workers pay
+          // calc the total hourly workers pay
           employee.calcTotalHourlyPay(hours, rate);
         }
         else if (employeeType.equals("salary"))
@@ -103,12 +103,17 @@ public class EmployeeEarnings
 
         for (int i = 0; i < count; i++)
         {
-          if (earnings[i].employeeName.equals(rewardedEmployee))
+          if (earnings[i].employeeName.equals(rewardedEmployee) &&
+              earnings[i].salary > 0)
           {
             earnings[i].salary *= 1.1;
             earnings[i].salaryBonus = true;
             System.out.println(rewardedEmployee +
                                " has been rewarded with a 10% bonus.");
+          }
+          else
+          {
+            System.out.println("Either employee name is invalid or not found.");
           }
         }
       }
@@ -132,15 +137,15 @@ public class EmployeeEarnings
   public static void printEmployees(EmployeeEarnings[] earnings, int count)
   {
     System.out.println(
-        "======================================================================================");
+        "================================================================================================");
     System.out.println(
-        "Name\t\tClass\t\tHours\tSales\t\tRate\tWeekly Pay Amount");
+        "Name\t\t\t\tClass\t\tHours\tSales\t\tRate\tWeekly Pay Amount");
     for (int i = 0; i < count; i++)
     {
       // if hourly worker
       if (earnings[i].hourlyRate > 0)
       {
-        System.out.printf("%s\t\thourly\t\t%.2f\t\t\t$%.2f\t$%.2f\n",
+        System.out.printf("%s\t\t\thourly\t\t%.2f\t\t\t$%.2f\t$%.2f\n",
                           earnings[i].employeeName, earnings[i].hoursWorked,
                           earnings[i].hourlyRate, earnings[i].totalPay);
       }
@@ -148,7 +153,8 @@ public class EmployeeEarnings
       else if (earnings[i].salary > 0)
       {
 
-        System.out.printf("%s\t\tsalary\t\t\t\t\t\t", earnings[i].employeeName);
+        System.out.printf("%s\t\t\tsalary\t\t\t\t\t\t",
+                          earnings[i].employeeName);
         if (earnings[i].salaryBonus)
         {
 
@@ -162,13 +168,13 @@ public class EmployeeEarnings
       else if (earnings[i].commission > 0)
       {
 
-        System.out.printf("%s\t\tcommission\t\t$%.2f\n",
+        System.out.printf("%s\t\t\tcommission\t\t$%.2f\n",
                           earnings[i].employeeName,
                           earnings[i].commission * 0.2);
       }
     }
     System.out.println(
-        "======================================================================================");
+        "================================================================================================");
 
     System.out.printf("\t\t\t\t\t\t\tTOTAL\t$%.2f\n",
                       calcTotalPay(earnings, count));

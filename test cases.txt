@@ -1,0 +1,5 @@
+1. Cannot enter anything but a number into amount of employees
+2. Expected to correctly print employees
+3. Expected to show employee with bonus
+4. Should be able to enter full employee names with spaces
+5. Allow 3 different types of workers and only display appropriate information about them
