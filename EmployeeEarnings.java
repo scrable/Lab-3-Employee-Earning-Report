@@ -109,11 +109,18 @@ public class EmployeeEarnings
             found = true;
             if (earnings[i].salary > 0)
             {
-              earnings[i].salary *= 1.1;
-              earnings[i].salaryBonus = true;
-              System.out.println(rewardedEmployee +
-                                 " has been rewarded with a 10% bonus.");
-              break;
+              if (!earnings[i].salaryBonus)
+              {
+                earnings[i].salary *= 1.1;
+                earnings[i].salaryBonus = true;
+                System.out.println(rewardedEmployee +
+                                   " has been rewarded with a 10% bonus.");
+                break;
+              }
+              else
+              {
+                System.out.println(rewardedEmployee + " has already been given a bonus.");
+              }
             }
             else
             {
