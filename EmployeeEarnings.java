@@ -101,20 +101,29 @@ public class EmployeeEarnings
             "Enter the name of the employee you would like to reward: ");
         String rewardedEmployee = in.nextLine();
 
+        boolean found = false;
         for (int i = 0; i < count; i++)
         {
-          if (earnings[i].employeeName.equals(rewardedEmployee) &&
-              earnings[i].salary > 0)
+          if (earnings[i].employeeName.equals(rewardedEmployee))
           {
-            earnings[i].salary *= 1.1;
-            earnings[i].salaryBonus = true;
-            System.out.println(rewardedEmployee +
-                               " has been rewarded with a 10% bonus.");
+            found = true;
+            if (earnings[i].salary > 0)
+            {
+              earnings[i].salary *= 1.1;
+              earnings[i].salaryBonus = true;
+              System.out.println(rewardedEmployee +
+                                 " has been rewarded with a 10% bonus.");
+              break;
+            }
+            else
+            {
+              System.out.println("Employee is not salaried.");
+            }
           }
-          else
-          {
-            System.out.println("Either employee name is invalid or not found.");
-          }
+        }
+        if (!found)
+        {
+          System.out.println("Employee was not found.");
         }
       }
       else if (bonus.equals("n") || bonus.equals("N"))
@@ -145,7 +154,7 @@ public class EmployeeEarnings
       // if hourly worker
       if (earnings[i].hourlyRate > 0)
       {
-        System.out.printf("%s\t\t\thourly\t\t%.2f\t\t\t$%.2f\t$%.2f\n",
+        System.out.printf("%-30s\thourly\t\t%.2f\t\t\t$%.2f\t$%.2f\n",
                           earnings[i].employeeName, earnings[i].hoursWorked,
                           earnings[i].hourlyRate, earnings[i].totalPay);
       }
@@ -153,7 +162,7 @@ public class EmployeeEarnings
       else if (earnings[i].salary > 0)
       {
 
-        System.out.printf("%s\t\t\tsalary\t\t\t\t\t\t",
+        System.out.printf("%-30s\tsalary\t\t\t\t\t\t",
                           earnings[i].employeeName);
         if (earnings[i].salaryBonus)
         {
@@ -168,7 +177,7 @@ public class EmployeeEarnings
       else if (earnings[i].commission > 0)
       {
 
-        System.out.printf("%s\t\t\tcommission\t\t$%.2f\n",
+        System.out.printf("%-30s\t\t\tcommission\t\t$%.2f\n",
                           earnings[i].employeeName,
                           earnings[i].commission * 0.2);
       }
@@ -181,13 +190,13 @@ public class EmployeeEarnings
   }
 
   // attributes
-  double hoursWorked = 0.0;
-  double hourlyRate = 0.0;
-  double totalPay = 0.0;
-  double salary = 0.0;
-  double commission = 0.0;
-  String employeeName = "";
-  boolean salaryBonus = false;
+  private double hoursWorked = 0.0;
+  private double hourlyRate = 0.0;
+  private double totalPay = 0.0;
+  private double salary = 0.0;
+  private double commission = 0.0;
+  private String employeeName = "";
+  private boolean salaryBonus = false;
 
   double getHourlyRate() { return hourlyRate; }
   double getSalary() { return salary; }
