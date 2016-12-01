@@ -225,7 +225,7 @@ public class EmployeeEarnings
     {
       double overtimeHours = hours - 40;
       double overtimePay = rate * 2;
-      totalPay = (hours * rate) + (overtimeHours * overtimePay);
+      totalPay = (40 * rate) + (overtimeHours * overtimePay);
     }
     return totalPay;
   }
